@@ -1,61 +1,58 @@
-import { Component, PropsWithChildren } from 'react'
-import { View, Button, Text } from '@tarojs/components'
-import { observer, inject } from 'mobx-react'
+import { View, Text, Button } from "@tarojs/components";
 
-import './index.css'
-
-type PageStateProps = {
-  store: {
-    counterStore: {
-      counter: number,
-      increment: Function,
-      decrement: Function,
-      incrementAsync: Function
-    }
-  }
-}
-
-interface Index {
-  props: PageStateProps;
-}
-
-@inject('store')
-@observer
-class Index extends Component<PropsWithChildren> {
-  componentDidMount () { }
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
-  increment = () => {
-    const { counterStore } = this.props.store
-    counterStore.increment()
-  }
-
-  decrement = () => {
-    const { counterStore } = this.props.store
-    counterStore.decrement()
-  }
-
-  incrementAsync = () => {
-    const { counterStore } = this.props.store
-    counterStore.incrementAsync()
-  }
-
-  render () {
-    const { counterStore: { counter } } = this.props.store
-    return (
-      <View className='index'>
-        <Button onClick={this.increment}>+</Button>
-        <Button onClick={this.decrement}>-</Button>
-        <Button onClick={this.incrementAsync}>Add Async</Button>
-        <Text>{counter}</Text>
+export default function Index() {
+  return (
+    <div className="index min-h-screen bg-gray-100 p-6 flex flex-col justify-center">
+      <div className="relative px-4 py-10 bg-white shadow-lg rounded-3xl p-20">
+        <View className="py-8 text-base leading-6 text-gray-700">
+          <View className="py-4">
+            An advanced online playground for Tailwind CSS, including support
+            for things like:
+          </View>
+          <View className="list-disc">
+            <View className="flex items-start mb-1">
+              <View className="h-6 flex items-center">
+                <View className="flex-shrink-0 h-2 w-2 bg-cyan-500 rounded-full"></View>
+              </View>
+              <Text className="ml-2">
+                Customizing your
+                <Text className="px-2 text-sm font-bold text-gray-900">
+                  tailwind.config.js
+                </Text>
+                file
+              </Text>
+            </View>
+            <View className="flex items-start mb-1">
+              <View className="h-6 flex items-center">
+                <View className="flex-shrink-0 h-2 w-2 bg-cyan-500 rounded-full"></View>
+              </View>
+              <Text className="ml-2">
+                Extracting classes with
+                <Text className="px-2 text-sm font-bold text-gray-900">
+                  @apply
+                </Text>
+              </Text>
+            </View>
+            <View className="flex items-start">
+              <View className="h-6 flex items-center">
+                <View className="flex-shrink-0 h-2 w-2 bg-cyan-500 rounded-full"></View>
+              </View>
+              <Text className="ml-2">Code completion with instant preview</Text>
+            </View>
+          </View>
+          <View className="py-4">
+            Perfect for learning how the framework works, prototyping a new
+            idea, or creating a demo to share online.
+          </View>
+        </View>
+        <View className="pt-6 leading-6 font-bold text-lg">
+          <Text>Want to dig deeper into Tailwind?</Text>
+          <Text className="text-cyan-600">Read the docs &rarr;</Text>
+        </View>
+      </div>
+      <View>
+        <Button className="btn-special">A Special Button</Button>
       </View>
-    )
-  }
+    </div>
+  );
 }
-
-export default Index

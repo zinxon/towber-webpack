@@ -1,0 +1,9 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "towber-webpack",
+  "appid": "testAppId",
+  "setting": {
+    "es6": false,
+    "minified": false
+  }
+}
